@@ -1,10 +1,17 @@
-// import files and packages up here
+const express = require('express');
+const morgan = require('morgan');
+const data = require('./data');
 
+const app = express();
 
-// create your express server below
-var app;
+app.use(morgan('dev'));
 
-// add your routes and middleware below
+app.get('/', function (req, res) {
+  res.status(200).send('New Express Server');
+});
 
-// finally export the express application
+app.get('/data', function (req, res) {
+  res.json(data);
+});
+
 module.exports = app;
